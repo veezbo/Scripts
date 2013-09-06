@@ -1,24 +1,24 @@
 #!/bin/bash
 
-#Very Useful Template File for Shell Scripts
-
 
 #Usage Statement
 usage()
 {
 	echo "
 USAGE:
+Use for Undoing Commits for git (which by the way should have this functionality built in)
 
-
-Required Arguments:
-	-
-
-Optional Arguments: 
+Optional Arguments:
 	-u displays this usage statement
 	-h displays this usage statement
+	-n <#> the number of commits to undo (default is 1)
+	-H do a hard undo/reset instead (overwrites any local changes since)
+
 
 Examples Uses:
-	here
+	bash undo_commit.sh (undoes last commit)
+	bash undo_commit.sh -n 4 (undoes last 4 commits)
+	bash undo_commit.sh -n 2 -H (undoes last 2 commits, hard)
 	"
 }
 
@@ -57,14 +57,6 @@ getAstString()
 }
 
 
-#Useful for Determining if an Array Contains an Element
-containsElement () 
-{
-  for val in "${@:2}"; do [[ "$val" == "$1" ]] && echo "true"; done
-  echo "false"
-}
-
-
 #Generates nice calling messages
 call()
 {
@@ -78,31 +70,48 @@ call()
 finish()
 {
 	echo ""
-	echo FINISHED
+	echo SUCCESSFULLY FINISHED
 	echo ""
 }
 
 
 #Read in Arguments
-while getopts ":uh" opt; do
+num=1
+hardness="soft"
+while getopts ":uhn:H" opt; do
 	case $opt in
 		h)
 			usage
-			return 1
+			exit 1
 			;;
 		u)
 			usage
-			return 1
+			exit 1
+			;;
+		n)
+			arg=$OPTARG
+			if [[ ! "$arg" =~ [0-9]+ ]]; then
+				error "argument after -n must be a number"
+				exit 1
+			fi
+			num="$arg"
+			;;
+		H)
+			hardness="hard"
 			;;
 		:)
 			error "Option -$OPTARG requires an argument"
-			return 1
+			exit 1
 			;;
 		\?)
 			echo "Invalid Argument: -$OPTARG" >&2
 			usage
-			return 1
+			exit 1
 			;;
 	esac
 done
 shift $(( OPTIND - 1 ))
+
+
+call "git reset --$hardness HEAD~$num"
+finish
