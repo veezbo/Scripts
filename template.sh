@@ -20,6 +20,7 @@ Optional Arguments:
 Examples Uses:
 	here
 	"
+	exit 1 #Must be adjusted in a sourced script
 }
 
 
@@ -80,6 +81,7 @@ finish()
 	echo ""
 	echo FINISHED
 	echo ""
+	exit 0
 }
 
 #set -e #Use if you want to exit on any error in the script
@@ -93,20 +95,17 @@ while getopts ":hu" opt; do
 	case $opt in
 		h)
 			usage
-			exit 1
 			;;
 		u)
 			usage
-			exit 1
 			;;
 		:)
 			error "Option -$OPTARG requires an argument"
-			exit 1
+			usage
 			;;
 		\?)
 			echo "Invalid Argument: -$OPTARG" >&2
 			usage
-			exit 1
 			;;
 	esac
 done
