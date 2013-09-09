@@ -82,27 +82,38 @@ finish()
 	echo ""
 }
 
+#set -e #Use if you want to exit on any error in the script
+
+
+#OPTIND=1 #Necessary in a Sourced Script
+#Additionally, do returns instead of exists in a sourced script
 
 #Read in Arguments
-while getopts ":uh" opt; do
+while getopts ":hu" opt; do
 	case $opt in
 		h)
 			usage
-			return 1
+			exit 1
 			;;
 		u)
 			usage
-			return 1
+			exit 1
 			;;
 		:)
 			error "Option -$OPTARG requires an argument"
-			return 1
+			exit 1
 			;;
 		\?)
 			echo "Invalid Argument: -$OPTARG" >&2
 			usage
-			return 1
+			exit 1
 			;;
 	esac
 done
 shift $(( OPTIND - 1 ))
+
+
+#call STUFF
+
+
+finish
