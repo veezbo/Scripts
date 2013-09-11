@@ -16,15 +16,15 @@ args = parser.parse_args()
 def isGitRepo(dir):
 	return '.git' in os.walk(dir).next()[1]
 
-
+#Will hold all the git directories
 dirs=[]
 
+#Get all Git Repositories from Given List
 if args.dirs:
-	#Get all Git Repositories from Given List
 	dirs = filter(isGitRepo, args.dirs)
 
+#Get all Git Repositories in Current Folder if not given list
 else:
-	#Get all Git Repositories in Current Folder
 	dirs = filter(isGitRepo, os.walk('.').next()[1])
 
 
