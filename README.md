@@ -15,6 +15,7 @@ Scripts that I personally developed and use. Feel free to use/modify as you see 
 
 - ```gits.py``` (and its linux executable, ```gits```): can propagate a git command to all git repositories in a directory
 
-**Templates**:
-    * ```template.sh```: bash script template
-    * ```template.py```: python script template
+### Templates:
+
+* ```template.sh```: bash script template
+* ```template.py```: python script template
