@@ -13,7 +13,7 @@ Scripts that I personally developed and use. Feel free to use/modify as you see 
 
 - ```gitundo.sh``` (and its executable, ```gitundo```): undoes a certain number of git commits
 
-- ```gits.py``` (and its linux executable, ```gits```): can propagate a git command to all git repositories in a directory
+- ```gits.py``` (and its linux executable, ```gits```): can propagate a git command to all, or a selected subset, of git repositories in a directory
 
 ### Templates:
 
