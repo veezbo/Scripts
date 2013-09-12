@@ -23,16 +23,18 @@ def finish():
 
 
 #Useful methods (to keep in mind)
-#	map(function, list)
-#	filter(function, list)
+#	map(function, list): Apply a function to list
+#	filter(function, list): Filter a list by function
 
 
 
 #Useful Wrapper terminal commands
-def cd(path):
+def cd(path=os.environ['HOME']):
 	os.chdir(path)
 def ls(path='.'):
 	return os.listdir(path)
+def dirs(path='.'):
+	return os.walk(path).next()[1]
 def mkdir(path):
 	os.mkdir(path)
 def rm(path):
