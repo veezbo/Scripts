@@ -58,12 +58,9 @@ parser._optionals.title = "Flag Arguments"
 parser.add_argument("argument", help="OPTIONAL/REQUIRED: help message")
 #Add more arguments here
 
-# #Print help if no arguments given (use if required arguments)
+#Print help if no arguments given (use if required arguments)
 # if len(sys.argv) == 1:
-# 	print ""
-# 	parser.print_help()
-# 	print ""
-# 	sys.exit(1)
+# 	help(parser)
 
 #Parse Arguments
 args = parser.parse_args()
