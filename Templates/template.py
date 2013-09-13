@@ -11,24 +11,19 @@ def help(parser):
 	print ""
 	sys.exit(1)
 
-
 #Prints error and quits
 def error(msg, parser):
 	print "ERROR: " + msg
 	help(parser)
-
 
 #Useful finish method
 def finish():
 	print "\nSUCCESSFULLY FINISHED\n"
 	sys.exit(0)
 
-
 #Useful methods (to keep in mind)
 #	map(function, list): Apply a function to list
 #	filter(function, list): Filter a list by function
-
-
 
 #Useful Wrapper terminal commands
 def cd(path=os.environ['HOME']):
@@ -65,6 +60,8 @@ parser.add_argument("argument", help="OPTIONAL/REQUIRED: help message")
 #Parse Arguments
 args = parser.parse_args()
 
+
+#>>>>START HERE<<<<<
 
 
 finish()
