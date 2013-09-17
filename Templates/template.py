@@ -13,7 +13,7 @@ def help(parser):
 
 #Prints error and quits
 def error(msg, parser):
-	print "ERROR: " + msg
+	print "\nERROR: " + msg + "\n"
 	help(parser)
 
 #Useful finish method
